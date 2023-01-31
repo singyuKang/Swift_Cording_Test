@@ -12,9 +12,7 @@ func solution(_ n:Int) -> [Int] {
             number = number / i
         }
     }
-    
-    
-    
+
     return Array(Set(answer)).sorted()
 
 }
