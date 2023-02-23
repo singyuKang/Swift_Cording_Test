@@ -1,30 +1,22 @@
 import Foundation
 
-
-//수정필요 오류
-
 func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
     
     var progresses = progresses
     var speeds = speeds
     var answer : [Int] = []
-    
-    // print(answer.dropFirst(0))
-
-    
+    var day = 0
+    var count = 0
+        
     while(progresses.count > 0) {
-        
-        var count = 0
-        var day = 0
-        
+        // print(progresses)
+        // print(count)
         var value = progresses[0] + speeds[0] * day
-        
         if(value >= 100){
             progresses.removeFirst()
             speeds.removeFirst()
             count += 1
-        }
-        else{
+        }else{
             if(count > 0) {
                 answer.append(count)
             }
@@ -32,8 +24,9 @@ func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
             day += 1
         }
         
+    }
+    if(count > 0){
         answer.append(count)
-
     }
     return answer.map{Int(String($0))!}
 }
