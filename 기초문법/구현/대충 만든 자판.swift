@@ -33,8 +33,5 @@ func solution(_ keymap:[String], _ targets:[String]) -> [Int] {
     }
     
     answer.indices.filter{answer[$0] == 100000}.forEach{answer[$0] = -1}
-    
-    
-    
     return answer
 }
