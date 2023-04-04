@@ -23,3 +23,31 @@ func solution(_ numbers:[Int], _ target:Int) -> Int {
     
     return answer
 }
+
+//타겟넘버 queue 를 통한 풀이
+func solution1(_ numbers:[Int], _ target:Int) -> Int {
+    var queue:[[Int]] = []
+    queue.append([-numbers[0], 0])
+    queue.append([numbers[0], 0])
+    var answer = 0
+    
+    // print(queue)
+
+    while !queue.isEmpty {
+        print(queue)
+        let q = queue.removeLast()
+        let num = q[0]
+        var idx = q[1]
+        idx += 1
+        if idx < numbers.count {
+            queue.append([num+numbers[idx], idx])
+            queue.append([num-numbers[idx], idx])
+        } else {
+            if target == num {
+                answer += 1
+            }
+        }
+    }
+
+    return answer
+}
