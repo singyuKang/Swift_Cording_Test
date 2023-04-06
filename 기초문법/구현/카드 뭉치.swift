@@ -19,7 +19,5 @@ func solution(_ cards1:[String], _ cards2:[String], _ goal:[String]) -> String {
     }
     
     return answer ? "Yes" : "No"
-    
-    
 
 }
