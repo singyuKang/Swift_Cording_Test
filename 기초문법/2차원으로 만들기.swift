@@ -1,8 +1,7 @@
 import Foundation
 
 func solution(_ num_list:[Int], _ n:Int) -> [[Int]] {
-    
-    //  
+      
     //  count 개
     let count = num_list.count / n
     var answer: [[Int]] = []
