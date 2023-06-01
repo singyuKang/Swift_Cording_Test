@@ -1,68 +1,33 @@
+
 import Foundation
-//import Combine
-
-//func readLine(strippingNewline : Bool = true) -> String?
-
-//let input = readLine()!
-var n = Int(readLine()!)!
-//let inputArray = input.split(separator: " ").map{Int(String($0))!}
-//let inputArray = input.split(separator: " ").map{String($0)}
-
-let firstValue = n
 
 
-var answer = 1
+//백준 1110번
+var inputNumber = Int(readLine()!)!
+var checkFirstNumber = inputNumber
+var answer = 0
 
 
-//var arr = Array(repeating: Array(repeating: 0, count : 2), count: n)
-//var rankArr = Array(repeating: 1, count: n)
-//readLine()!.split(separator : " ").map{Int($0)!}
-
-//print(inputArray[0] + inputArray[1])
-
-//for _ in 0..<n {
-//    arr.append(String(readLine()!))
-//}
-
-if(n==1){
-    print(60)
-}else{
-    
-    if(n<10){
-        n *= 10
+while true {
+    if inputNumber == 0{
+        break
     }
 
+//    if inputNumber < 10 {
+//        inputNumber *= 10
+//    }
 
-
-    var sum = 0
-    for i in String(n){
-        sum += Int(String(i))!
-    }
-
-    sum %= 10
-    n %= 10
-    n = Int(String(n)+String(sum))!
-
-    //
-
-    while(firstValue != n){
-
-    //    if(n<10){
-    //        n *= 10
-    //    }
-
-        var k = 0
-        for i in String(n){
-            k += Int(String(i))!
-        }
-
-        k %= 10
-        n %= 10
-        n = Int(String(n)+String(k))!
+    let leftNumber = String(inputNumber % 10)
+    let rightNumber = String(String(inputNumber).map{Int(String($0))!}.reduce(0, +) % 10)
+    let checkNumber = leftNumber + rightNumber
+    if(Int(checkNumber)! == checkFirstNumber){
+        break
+    }else{
+        inputNumber = Int(checkNumber)!
         answer += 1
     }
-
-    print(answer)
-
     
+  
 }
+print(answer+1)
+
