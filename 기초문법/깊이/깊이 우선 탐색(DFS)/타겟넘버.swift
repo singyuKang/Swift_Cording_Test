@@ -51,3 +51,51 @@ func solution1(_ numbers:[Int], _ target:Int) -> Int {
 
     return answer
 }
+
+
+func solution(_ numbers:[Int], _ target:Int) -> Int {
+    
+    var answer = 0
+    var index = 1
+    
+    func dfs(_ value : Int,_ myIndex : Int){
+        
+        if myIndex == numbers.count {
+            if value == target {
+                answer += 1
+            }
+            return
+        }
+ 
+        dfs(value + numbers[myIndex], myIndex + 1)
+        dfs(value - numbers[myIndex], myIndex + 1)
+        
+    }
+    
+    func bfs(){
+        var queue :[[Int]] = []
+        queue.append([numbers[0], 0])
+        queue.append([-numbers[0], 0])
+        
+        
+        while !queue.isEmpty {
+            let first = queue.removeLast()
+            let (number, index) = (first[0], first[1])
+            
+            if index < numbers.count-1 {
+                queue.append([number + numbers[index+1], index + 1])
+                queue.append([number - numbers[index+1], index + 1])
+            }else{
+                if number == target {
+                    answer += 1
+                }
+            }
+        }
+    }
+    
+    bfs()
+    
+    return answer
+    
+
+}
