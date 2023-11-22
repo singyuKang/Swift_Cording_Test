@@ -99,3 +99,56 @@ func solution(_ numbers:[Int], _ target:Int) -> Int {
     
 
 }
+
+
+//2023 11 22
+func solution(_ numbers:[Int], _ target:Int) -> Int {
+    
+    var answer = 0
+    var index = 1
+    
+    
+    func dfs(_ value : Int , _ myIndex : Int) {
+        
+        if myIndex == numbers.count {
+            if value == target {
+                answer += 1
+            }
+            return
+        }
+        dfs(value + numbers[myIndex], myIndex + 1)
+        dfs(value - numbers[myIndex], myIndex + 1)
+        
+    }
+    
+    func bfs(){
+        var queue : [[Int]] = []
+        
+        queue.append([numbers[0], 0])
+        queue.append([-numbers[0],0])
+        
+        while !queue.isEmpty{
+            let queueFirst = queue.removeFirst()
+            let (value , myIndex) = (queueFirst[0], queueFirst[1])
+            if myIndex == numbers.count-1 {
+                if value == target {
+                    answer += 1
+                }
+                
+            }else{
+                queue.append([value + numbers[myIndex+1] , myIndex + 1])
+                queue.append([value - numbers[myIndex+1] , myIndex + 1])
+                
+            }
+              
+        }
+    }
+    
+    bfs()
+    
+
+    
+    return answer
+    
+
+}
