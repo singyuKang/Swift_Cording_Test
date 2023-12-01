@@ -43,3 +43,29 @@ func solution(_ n:Int, _ computers:[[Int]]) -> Int {
  
     return answer
 }
+
+//함수 이용 풀이
+func solution(_ n:Int, _ computers:[[Int]]) -> Int {
+    
+    var visitList : [Bool] = Array(repeating : false , count : n)
+    var answer = 0
+    
+    func dfs(_ idx : Int) {
+        visitList[idx] = true
+        for i in 0..<n {
+            if visitList[i] == false && computers[idx][i] {
+                dfs(i)
+            }
+        }
+    }
+    
+    for i in 0..<n {
+        if !visitList[i] {
+            answer += 1
+            dfs(i)
+        }
+    }
+    
+ 
+    return answer
+}
