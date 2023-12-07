@@ -36,7 +36,7 @@ func solution(_ id_list:[String], _ report:[String], _ k:Int) -> [Int] {
 
     for i in reportCount {
         var (key, value) = (i.key, i.value)
-        if value >= 2 {
+        if value >= k {
             for k in reportList {
                 var (reportkey, reportvalue) = (k.key, k.value)
                 
@@ -59,4 +59,41 @@ func solution(_ id_list:[String], _ report:[String], _ k:Int) -> [Int] {
     }
     
     return answerList
+}
+
+//풀이방식 변경 
+func solution(_ id_list:[String], _ report:[String], _ k:Int) -> [Int] {
+
+    var reportedList : [String : Set<String>] = [:]
+    var idxList : [String : Int] = [:]
+    var answer = Array(repeating : 0, count : id_list.count)
+    
+    for (index, value) in id_list.enumerated(){
+        idxList[value] = index
+    }
+    
+    for i in report {
+        let split = i.split(separator : " ")
+        let (report , reported) = (String(split[0]),String(split[1]))
+        
+        if let _ = reportedList[reported] {
+             reportedList[reported]!.insert(report)
+        } else{
+             reportedList[reported] = [report]
+        }     
+    }
+    
+    for i in reportedList{ 
+        if i.value.count >= k {
+            for j in i.value {
+                answer[idxList[j]!] += 1
+            }
+        }
+    }
+    
+    return answer
+        
+ 
+    
+    
 }

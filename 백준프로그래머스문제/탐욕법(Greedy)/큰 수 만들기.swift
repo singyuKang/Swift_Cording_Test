@@ -1,34 +1,35 @@
 import Foundation
 
-//완전탐색은 시간초과
 func solution(_ number:String, _ k:Int) -> String {
     
-    
-    let numberArray = Array(number).map({Int(String($0))!})
+    var numberArray = number.map{Int(String($0))!}
     var stack : [Int] = []
-    var cnt = 0
-    
+    var count = 0//지운 횟수
+    var answer = ""
     
     for i in 0..<numberArray.count {
-        //새로 들어온 수보다 작은 수를 지움
         
-        while stack.count > 0 && stack.last! < numberArray[i] && cnt < k{
+        while stack.count > 0 && stack.last! < numberArray[i] && count < k {
             stack.removeLast()
-            cnt += 1 // 지운 횟수 체크
-            
-            if cnt == k{
+            count += 1
+            if count == k {
                 break
             }
         }
-        
         stack.append(numberArray[i])
     }
-    if cnt == 0 {
-        for i in 1...k{
+    
+    //testCase 12 
+    //지운횟수가 0회인경우 k번 제거
+    if count == 0 {
+        for i in 1...k {
             stack.removeLast()
         }
+    } 
+    
+    for k in stack {
+        answer += String(k)
     }
-    
-    
-    return stack.reduce(""){$0 + "\($1)"}
+
+    return answer
 }
