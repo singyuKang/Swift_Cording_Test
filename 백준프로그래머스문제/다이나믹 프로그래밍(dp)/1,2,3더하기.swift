@@ -11,9 +11,7 @@ dpArray[2] = 2
 dpArray[3] = 4
 
 for i in 4...11 {
-    
     dpArray[i] = dpArray[i-1] + dpArray[i-2] + dpArray[i-3]
-    
 }
 
 
