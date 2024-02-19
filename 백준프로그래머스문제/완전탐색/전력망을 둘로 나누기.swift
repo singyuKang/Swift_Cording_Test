@@ -44,7 +44,7 @@ func solution(_ n:Int, _ wires:[[Int]]) -> Int {
         if tempAnswer < answer {
             answer = tempAnswer
         }
-
+ 
     }
     
      
