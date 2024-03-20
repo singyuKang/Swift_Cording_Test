@@ -1,7 +1,6 @@
 import Foundation
 
 // 백준 18352번 https://www.acmicpc.net/problem/18352
-
 var split = readLine()!.split(separator: " ").map { Int(String($0))! }
 var (N , M, K, X) = (split[0], split[1], split[2], split[3])
 var map : [[Int]] = Array(repeating: [], count: N+1)
