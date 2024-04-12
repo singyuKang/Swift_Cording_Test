@@ -27,7 +27,7 @@ while true {
             dfs(depth + 1 , currentArr + [arr[i]] , i+1)
         }
         
-        
+        -
 
     }
     

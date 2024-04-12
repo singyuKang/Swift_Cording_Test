@@ -39,7 +39,7 @@ for _ in 0..<count {
                 if nx >= 0 && ny >= 0 && nx < xSize && ny < ySize && visited[nx][ny] == false && map[nx][ny] == 1 {
                     visited[nx][ny] = true
                     queue.append([nx , ny])
-                }
+                } 
                 
             }
             
