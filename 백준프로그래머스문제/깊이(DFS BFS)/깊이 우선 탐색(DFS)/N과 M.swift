@@ -14,7 +14,7 @@ func dfs(_ currentNumber : Int) {
         return
     }
     
-    for i in currentNumber...N {3
+    for i in currentNumber...N {
         answer.append(i)
         dfs(i)
         _ = answer.popLast()!
